@@ -17,7 +17,7 @@ export default {
     expectedArgs: '<text>',
 
     slash: true,
-    testOnly: true,
+    //testOnly: true,
     ephemeral: true,
 
     options: [

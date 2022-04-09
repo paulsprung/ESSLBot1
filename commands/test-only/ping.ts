@@ -5,7 +5,7 @@ export default {
     description: 'Replies with pong',
     
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     callback: ({}) => {
         return 'Pong'

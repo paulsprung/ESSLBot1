@@ -12,7 +12,7 @@ export default {
     expectedArgs: '<channel> <category>',
 
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     options: [
         {
