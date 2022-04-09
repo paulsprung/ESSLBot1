@@ -16,7 +16,7 @@ export default {
     expectedArgs: '<number>',
 
     slash: true,
-    testOnly: true,
+    //testOnly: true,
     ephemeral: true,
 
     options: [
