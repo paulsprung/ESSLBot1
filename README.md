@@ -46,9 +46,10 @@ This is a rewrite and remake of the [v1](https://github.com/PhilRoli/ESSL_Bot) a
 
 - [x] Verification
 - [x] Tempchannels
-- [] Supporticket
-- [] Rollenabfrage über ESSL Website
-- [] Twitch Active Live Rolle
-- [] Reactive Roles
-- [] Embed Message mit Aktivierbaren Buttons zur Tunieranmeldung (link)
-- [] LFT Post Command
+- [x] Info Commands
+- [ ] Supporticket
+- [ ] Rollenabfrage über ESSL Website
+- [ ] Twitch Active Live Rolle
+- [ ] Reactive Roles
+- [ ] Embed Message mit Aktivierbaren Buttons zur Tunieranmeldung (link)
+- [ ] LFT Post Command
