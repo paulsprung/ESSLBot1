@@ -1,5 +1,5 @@
 import { Client, GuildMemberRoleManager, Interaction, Role, TextChannel } from "discord.js";
-import verifychannelschema from "../models/verifychannelschema";
+import verifychannelSchema from "../models/verifychannelschema";
 
 const verifyData = {} as {
     // guildID: [channel, role]
@@ -17,7 +17,7 @@ export default (client: Client) => {
         let data = verifyData[guild.id]
         console.log(data)
         if(!data){
-            const results = await verifychannelschema.findById(guild.id)
+            const results = await verifychannelSchema.findById(guild.id)
             console.log(results)
             if(!results){
                 return

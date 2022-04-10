@@ -29,7 +29,7 @@ export default (client: Client) => {
         const member = newState.member!
 
 
-        if(!oldState.channel && newState.channel === data[0]) {
+        if(newState.channel === data[0]) {
             const joinchannel = await guild.channels.create(`➤${user.username}'s Channel`, {
                 type: 'GUILD_VOICE',
                 parent: data[1],

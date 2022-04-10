@@ -59,6 +59,9 @@ export default {
             }
             if(member === data[2]){
                 let number = interaction?.options.getInteger('number')
+                if(number! >= 100 || number! <= 0) {
+                    number = 0
+                }
                 data[0].setUserLimit(number!)
                 return {
                     content: 'Size gesetzt',
