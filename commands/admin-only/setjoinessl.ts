@@ -1,11 +1,13 @@
+//this command is just used for people wanting to have 'beta-acces'
+
 import DJS, { MessageActionRow, MessageButton } from 'discord.js'
 import { MessageEmbed } from 'discord.js';
 import { ICommand } from "wokcommands";
-import verifychannelSchema from '../../models/verifychannelschema';
+import betaaccessSchema from '../../models/betaaccessSchema';
 
 export default {
     category: 'Configuration',
-    description: 'Set the temp verify!',
+    description: 'sets beta button',
     
     permissions: ['ADMINISTRATOR'],
 
@@ -45,28 +47,27 @@ export default {
         //embeded und buttons 
         const embed = new MessageEmbed()
             .setColor('#e3000b')
-            .setTitle('Accept the rules')
-            .setDescription('To accept the rules click on the button below!')
-            .setThumbnail('https://i.imgur.com/L8DSPNg.png')
+            .setTitle('Get Access')
+            .setDescription('Want to have a look onto the new ESSL Server?')
             .setTimestamp()
             .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
         
         const row = new MessageActionRow() 
             .addComponents(
                 new MessageButton()
-                    .setCustomId('verify')
+                    .setCustomId('betaacces')
                     .setEmoji('✔️')
-                    .setLabel('verify')
+                    .setLabel('get Access')
                     .setStyle('SUCCESS')
             )
-            
+
         target.send({
             embeds : [embed],
             components: [row]
         })
 
 
-        await verifychannelSchema.findOneAndUpdate({
+        await betaaccessSchema.findOneAndUpdate({
             _id: guild.id
 
         },{
@@ -76,7 +77,7 @@ export default {
         },{
             upsert: true
         })
-        return 'Verify Channel gesetzt';
+        return 'betaaccess channel set';
         
     }
 } as ICommand
