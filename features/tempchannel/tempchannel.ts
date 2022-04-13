@@ -1,6 +1,6 @@
 import { Client, VoiceChannel, CategoryChannel } from 'discord.js';
-import tempchannelSchema from '../models/tempchannel-schema';
-import channelInfoSchema from '../models/channelInfoSchema';
+import tempchannelSchema from '../../models/tempchannel-schema';
+import channelInfoSchema from '../../models/channelInfoSchema';
 
 const tempchannelData = {} as {
     // guildID: [channel, category]
