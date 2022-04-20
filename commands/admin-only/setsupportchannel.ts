@@ -69,6 +69,7 @@ export default {
                             description: 'A normal Support ticket if something isn`t working',
                             emoji: '✉️',
                             value: 'Support',
+                            default: true
                         },
                         {
                             label: 'Report',
