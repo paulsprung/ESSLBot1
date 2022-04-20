@@ -3,7 +3,7 @@
 import DJS, { MessageActionRow, MessageButton } from 'discord.js'
 import { MessageEmbed } from 'discord.js';
 import { ICommand } from "wokcommands";
-import betaaccessSchema from '../../models/betaaccessSchema';
+import betaaccessSchema from '../../../models/betaaccessSchema';
 
 export default {
     category: 'Configuration',

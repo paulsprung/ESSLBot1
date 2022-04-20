@@ -9,10 +9,10 @@ export default {
     permissions: ['ADMINISTRATOR'],
 
     minArgs: 1,
-    expectedArgs: '<channel> <category>',
+    expectedArgs: '<channel> <category> <role>',
 
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     options: [
         {

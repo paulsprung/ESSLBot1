@@ -1,6 +1,6 @@
 import { Client, VoiceChannel, CategoryChannel, } from "discord.js";
-import tempchannelSchema from "../../models/tempchannel-schema";
-import channelInfoSchema from "../../models/channelInfoSchema";
+import tempchannelSchema from "../../models/tempchannelmodels/tempchannel-schema";
+import channelInfoSchema from "../../models/tempchannelmodels/channelInfoSchema";
 
 
 const tempchannelData = {} as {
@@ -35,6 +35,7 @@ export default (client: Client) => {
                 parent: data[1],
             })
             member.voice.setChannel(joinchannel)
+            
             await new channelInfoSchema({
                 _id: joinchannel.id,
                 channelId: joinchannel.id,

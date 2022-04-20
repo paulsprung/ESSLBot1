@@ -1,5 +1,5 @@
 import { Client, Role, TextChannel } from "discord.js";
-import verifychannelSchema from "../models/verifychannelschema";
+import verifychannelSchema from "../../models/verifychannelschema";
 
 const verifyData = {} as {
     // guildID: [channel, role]

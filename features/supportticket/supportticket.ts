@@ -1,5 +1,5 @@
 import { CategoryChannel, Client, MessageSelectMenu, TextChannel, MessageEmbed, MessageActionRow, MessageButton, ButtonInteraction, Collection, Options, Role } from "discord.js";
-import supportchannelSchema from "../models/supportchannel-Schema";
+import supportchannelSchema from "../../models/supportchannel-Schema";
 
 const supportchannelData = {} as {
     // guildID: [channel, role]
@@ -27,7 +27,6 @@ export default (client: Client) => {
             data = supportchannelData[guild.id] = [channel, category, role]
         }
 
-
         if(interaction.channel?.id === data[0].id){
             const component = interaction.component as MessageSelectMenu
             const selected = component.options.filter((option) => {
@@ -50,37 +49,39 @@ export default (client: Client) => {
                     
                 })
             
-            const embed = new MessageEmbed()
-                .setColor('#e3000b')
-                .setTitle(`${id.value} Ticket`)
-                .setDescription('Quickly describe your needs, a Supporter will be there soon!')
-                .setTimestamp()
-                .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
+                const embed = new MessageEmbed()
+                    .setColor('#e3000b')
+                    .setTitle(`${id.value} Ticket`)
+                    .setDescription('Quickly describe your needs, a Supporter will be there soon!')
+                    .setTimestamp()
+                    .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
 
 
-            const row = new MessageActionRow() 
-                .addComponents(
-                    new MessageButton()
-                        .setCustomId('Claim')
-                        .setEmoji('✔️')
-                        .setLabel('Claim')
-                        .setStyle('PRIMARY')
-                )
-                .addComponents(
-                    new MessageButton()
-                        .setCustomId('Close')
-                        .setLabel('Close')
-                        .setStyle('DANGER')
-                )
-            channel.send(`<@${interaction.user.id}>`)
-            channel.send({
-                embeds : [embed],
-                components: [row],
-            })
+                const row = new MessageActionRow() 
+                    .addComponents(
+                        new MessageButton()
+                            .setCustomId('Claim')
+                            .setEmoji('✔️')
+                            .setLabel('Claim')
+                            .setStyle('PRIMARY')
+                    )
+                    .addComponents(
+                        new MessageButton()
+                                .setCustomId('Close')
+                            .setLabel('Close')
+                            .setStyle('DANGER')
+                    )
+
+                channel.send(`<@${interaction.user.id}>`)
+                channel.send({
+                    embeds : [embed],
+                    components: [row],
+                })
             
-
-
-
+                interaction.reply({
+                    content:`created support-channel: <#${channel.id}>`,
+                    ephemeral: true
+                })
                 //Code for the Thread support, not finished
                 //requires guild level 2 
                 /*let channel = guild.channels.cache.find(channel => channel.name === id.value) as TextChannel
@@ -97,10 +98,7 @@ export default (client: Client) => {
                 }*/
 
             }
-            interaction.reply({
-                content:'Ticket created',
-                ephemeral: true
-            })
+            
         }
         
     })

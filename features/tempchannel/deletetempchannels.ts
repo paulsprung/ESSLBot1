@@ -1,5 +1,5 @@
 import { Client, CategoryChannel, GuildMember, VoiceChannel, } from "discord.js";
-import channelInfoSchema from "../../models/channelInfoSchema";
+import channelInfoSchema from "../../models/tempchannelmodels/channelInfoSchema";
 
 const channelInfoData = {} as {
     // guildID: [channel, category]

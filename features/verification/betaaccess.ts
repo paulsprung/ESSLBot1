@@ -1,5 +1,5 @@
 import { Client, GuildMemberRoleManager, Interaction, Role, TextChannel } from "discord.js";
-import betaaccessSchema from "../models/betaaccessSchema";
+import betaaccessSchema from "../../models/betaaccessSchema";
 
 const betaaccessData = {} as {
     // guildID: [channel, role]

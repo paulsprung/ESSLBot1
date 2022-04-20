@@ -1,7 +1,7 @@
 import DJS, { MessageActionRow, MessageButton } from 'discord.js'
 import { MessageEmbed } from 'discord.js';
 import { ICommand } from "wokcommands";
-import verifychannelSchema from '../../models/verifychannelschema';
+import verifychannelSchema from '../../../models/verifychannelschema';
 
 export default {
     category: 'Configuration',
@@ -13,7 +13,7 @@ export default {
     expectedArgs: '<channel> <role>',
 
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     options: [
         {

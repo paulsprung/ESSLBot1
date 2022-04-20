@@ -1,6 +1,6 @@
 import DJS from 'discord.js'
 import { ICommand } from "wokcommands";
-import tempchannelSchema from '../../models/tempchannel-schema';
+import tempchannelSchema from '../../models/tempchannelmodels/tempchannel-schema';
 
 export default {
     category: 'Configuration',

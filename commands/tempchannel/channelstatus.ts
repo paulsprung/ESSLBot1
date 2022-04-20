@@ -1,7 +1,7 @@
 import DJS from 'discord.js'
 import { VoiceChannel, CategoryChannel, GuildMember } from 'discord.js';
 import { ICommand } from "wokcommands";
-import channelInfoSchema from '../../models/channelInfoSchema';
+import channelInfoSchema from '../../models/tempchannelmodels/channelInfoSchema';
 
 const channelInfoData = {} as {
     // guildID: [channel, category]
