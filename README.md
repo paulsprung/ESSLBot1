@@ -7,9 +7,17 @@ This is a rewrite and remake of the [v1](https://github.com/PhilRoli/ESSL_Bot) a
 ## Command List
 
 - **admin-only**
+  - *setverification*
+    - setjoinessl
+    - setverify
   - settempchannel
-  - setverify
   - setwelcome
+  - setTwitchRole
+  - setsupportchannel
+- **info**
+  - bot-info
+  - server-info
+  - user-info 
 - **tempchannel**
   - channelname
   - channelsize
@@ -26,16 +34,27 @@ This is a rewrite and remake of the [v1](https://github.com/PhilRoli/ESSL_Bot) a
 - **tempchannel**
   - deletetempchannel
   - tempchannel
+- **supportTicket**
+  - supportcontrol
+  - supportticket
+- **twitchLive**
+  - twitchLive
+- **verification**
+  - verify
+  - betaaccess
 - status-changer
-- verify
 - welcome
 
 ---
 
 ## Models
 
-- channelInfoSchema
-- tempchannel-schema
+- **tempchannelmodels**
+  - tempchannel-schema
+  - channelInfoSchema
+- betaaccessSchema
+- supportchannel-Schema
+- twitchrole-Schema
 - test-schema
 - verifychannelSchema
 - welcome-schema
@@ -47,9 +66,11 @@ This is a rewrite and remake of the [v1](https://github.com/PhilRoli/ESSL_Bot) a
 - [x] Verification
 - [x] Tempchannels
 - [x] Info Commands
-- [ ] Supporticket
+- [x] Supporticket
 - [ ] Rollenabfrage über ESSL Website
 - [x] Twitch Active Live Rolle
-- [ ] Reactive Roles
+- [ ] Reactive Roles #needed before opening
 - [ ] Embed Message mit Aktivierbaren Buttons zur Tunieranmeldung (link)
-- [ ] LFT Post Command
+- [ ] Embed Message mit Regeln und Infos #needed before opening
+- [ ] Banner hinzufuegen per Bot #needed before opening
+- [ ] LFT Post Command 
