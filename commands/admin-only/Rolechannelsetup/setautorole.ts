@@ -1,8 +1,8 @@
-import DJS, { Message, MessageActionRow, MessageButton } from 'discord.js'
-import { MessageEmbed } from 'discord.js';
-import { InviteTargetType } from 'discord.js/typings/enums';
+import DJS, { Message, MessageEmbed, MessageEmbedVideo, TextChannel } from 'discord.js';
 import { ICommand } from "wokcommands";
-//import betaaccessSchema from '../../../models/betaaccessSchema';
+import autoroleSchema from '../../../models/autorole-Schema';
+
+
 
 export default {
     category: 'Configuration',
@@ -56,6 +56,19 @@ export default {
             .setTimestamp()
             .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
 
+        const feedback = new MessageEmbed()
+            .setColor('#e3000b')
+            .setTitle('**Setup**')
+            .setDescription('Autorolechannel set!')
+            .addFields(
+                
+                { name: 'add Autoroles', value: '/addbuttonrole'},
+                { name: 'add the valorant Autorole', value: '/setvaloautorole', inline: true },
+                { name: 'add the RocketLeague Autorole', value: 'need to work on it', inline: true },
+            )
+            .setTimestamp()
+            .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
+        
         await target.send({
             files: ["https://i.imgur.com/Ldrkg4n.jpg"],
         })
@@ -70,37 +83,17 @@ export default {
         await target.send({
             embeds: [newsembed],
         })
-        
-        let msgId = ''
-        target.messages.fetch()
-            .then(messages => {
-                messages.forEach(message => {
-                    msgId = `${msgId} ${message.id}`
-                    console.log(message.id)
-                })
-            })
-        
-        console.log(msgId)
-        /*
-        target.messages.fetch({ limit: 100 }).then(messages => {
-            console.log(`Received ${messages.size} messages`);
-            messages.forEach(message => {
-                console.log(message.content)
-            })
 
-        })*/
-
-        /*await betaaccessSchema.findOneAndUpdate({
+        await autoroleSchema.findOneAndUpdate({
             _id: guild.id
 
         },{
             _id: guild.id,
-            roleId: give.id,
             channelId: target.id
         },{
             upsert: true
         })
-        return 'betaaccess channel set';
-    */    
+
+        return 'autorolechannelset';   
     }
 } as ICommand

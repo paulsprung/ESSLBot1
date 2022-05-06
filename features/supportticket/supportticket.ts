@@ -1,4 +1,4 @@
-import { CategoryChannel, Client, MessageSelectMenu, TextChannel, MessageEmbed, MessageActionRow, MessageButton, ButtonInteraction, Collection, Options, Role } from "discord.js";
+import { CategoryChannel, Client, MessageSelectMenu, TextChannel, MessageEmbed, MessageActionRow, MessageButton,   Role } from "discord.js";
 import supportchannelSchema from "../../models/supportchannel-Schema";
 
 const supportchannelData = {} as {

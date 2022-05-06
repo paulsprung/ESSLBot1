@@ -1,5 +1,5 @@
 import DJS, { MessageActionRow, MessageButton } from 'discord.js'
-import { MessageEmbed } from 'discord.js';
+import { MessageEmbed, TextChannel } from 'discord.js';
 import { ICommand } from "wokcommands";
 //import betaaccessSchema from '../../../models/betaaccessSchema';
 
