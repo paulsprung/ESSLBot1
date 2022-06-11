@@ -15,7 +15,7 @@ export default {
     expectedArgs: '<channel> <role>',
 
     slash: true,
-    testOnly: true,
+    testOnly: false,
 
     options: [
         {

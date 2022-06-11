@@ -1,12 +1,8 @@
 import DJS, { Message, MessageEmbed, MessageEmbedVideo, TextChannel } from 'discord.js';
 import { ICommand } from "wokcommands";
-import autoroleSchema from '../../../models/autorole-Schema';
-
-
-
 export default {
     category: 'Configuration',
-    description: 'sends Autorole Messages',
+    description: 'sends Rule Message',
     
     permissions: ['ADMINISTRATOR'],
 
@@ -14,12 +10,12 @@ export default {
     expectedArgs: '<channel>',
 
     slash: true,
-    testOnly: true,
+    testOnly: false,
 
     options: [
         {
             name: 'channel',
-            description: 'Autorole Channel',
+            description: 'Rule Channel',
             required: true,
             type: DJS.Constants.ApplicationCommandOptionTypes.CHANNEL
         }
@@ -34,15 +30,29 @@ export default {
             return 'Please tag a text channel.'
         }
 
-        //embeded und buttons 
-        const schoolembed = new MessageEmbed()
+        //embeded und and Pictures 
+
+        const ruleembeded = new MessageEmbed()
             .setColor('#e3000b')
-            .setTitle('**School**')
-            .setDescription('Get your school role here!')
+            .setDescription('Wichtige Regeln die zu befolgen sind!')
+            .addField(
+                'Allgemeine Verhaltensregeln auf dem Discord', '\u200B'
+            )
+            .addFields(
+                { name: '**1. Behandelt alle mit Respekt.**', value: 'Persönliche Attacken, Schimpfwörter etc. werden mit Mutes / kicks gehandelt.' },
+                { name: '**2. Die Channels anhand ihrer Channel Beschreibung nutzen.**', value: 'Mehrfaches missachten dieser Beschreibung führt zu Mutes.' },
+                { name: '**3. Absolut kein NSFW.**', value: 'Wir müssen uns an die Jugendschutzgesetze halten. Missachten dieses wird mit Kicks bestraft.', },
+                { name: '**4. Keine Werbung.**', value: '\u200B', },
+                { name: '**5. Kein Spamming.**', value: '\u200B \u200B', },
+                { name: '**6. Gib dich nicht als Person aus die du nicht bist.**', value: '\u200B', },
+                { name: '***Anmerkung***', value: '• Diese Regeln sind nicht allumfassend. Nur weil es nicht hier steht, heißt es nicht das es erlaubt ist. \n • Benutze deinen Verstand und folgen den Anweisungen des Morderations Teams. \n • Um einen User zu Reporten, Feedback zu geben oder anderweitiges, sende bitte eine DM an \n • Discord Terms of Service sind jederzeit einzuhalten.', },
+
+
+            )
             .setTimestamp()
             .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
     
-        const gameembed = new MessageEmbed()
+        /*const gameembed = new MessageEmbed()
             .setColor('#e3000b')
             .setTitle('**Games**')
             .setDescription('Get your Gamerole here!')
@@ -68,32 +78,17 @@ export default {
             )
             .setTimestamp()
             .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
+        */
+        await target.send({
+            files: ["https://i.imgur.com/YfW4K8P.png"],
+        })
+        await target.send({
+            embeds: [ruleembeded],
+        })
+
+
+
         
-        await target.send({
-            files: ["https://i.imgur.com/Ldrkg4n.jpg"],
-        })
-        await target.send({
-            embeds: [schoolembed],
-        })
-
-        await target.send({
-            embeds: [gameembed],
-        })
-
-        await target.send({
-            embeds: [newsembed],
-        })
-
-        await autoroleSchema.findOneAndUpdate({
-            _id: guild.id
-
-        },{
-            _id: guild.id,
-            channelId: target.id
-        },{
-            upsert: true
-        })
-
-        return 'autorolechannelset';   
+        return 'rulechannelset';   
     }
 } as ICommand
