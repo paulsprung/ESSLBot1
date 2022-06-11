@@ -22,7 +22,7 @@ export default {
     description: 'Adds an auto role to a message via buttons',
 
     slash: true,
-    testOnly: true,
+    testOnly: false,
     guildOnly: true,
 
     requiredPermissions: ['ADMINISTRATOR'],
