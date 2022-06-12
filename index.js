@@ -54,7 +54,7 @@ client.on('ready', () => __awaiter(void 0, void 0, void 0, function* () {
     new wokcommands_1.default(client, {
         commandDir: path_1.default.join(__dirname, 'commands'),
         featureDir: path_1.default.join(__dirname, 'features'),
-        typeScript: true,
+        typeScript: __filename.endsWith(".ts"),
         testServers: ['953970921981489173'],
         botOwners: ['837661782151659560', '433645584696475653'],
         mongoUri: process.env.MONGO_URI,
