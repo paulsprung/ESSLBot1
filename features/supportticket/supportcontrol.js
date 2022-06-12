@@ -34,26 +34,28 @@ exports.default = (client) => {
         }
         let channel = interaction.channel;
         let member = interaction.member;
-        if (channel.parent.id === data[0].id) {
-            if (member.roles.cache.has(data[1].id) || member.permissions.has("ADMINISTRATOR")) {
-                if (interaction.customId === 'Claim') {
-                    channel.send({
-                        content: `<@${interaction.user.id}> claimed the ticket!`
-                    });
+        if (channel.parent !== null) {
+            if (channel.parent.id === data[0].id) {
+                if (member.roles.cache.has(data[1].id) || member.permissions.has("ADMINISTRATOR")) {
+                    if (interaction.customId === 'Claim') {
+                        channel.send({
+                            content: `<@${interaction.user.id}> claimed the ticket!`
+                        });
+                        interaction.reply({
+                            content: `you claimed the ticket`,
+                            ephemeral: true
+                        });
+                    }
+                    else if (interaction.customId === 'Close') {
+                        channel.delete();
+                    }
+                }
+                else {
                     interaction.reply({
-                        content: `you claimed the ticket`,
+                        content: 'Only Supporter can claim/close a ticket!',
                         ephemeral: true
                     });
                 }
-                else if (interaction.customId === 'Close') {
-                    channel.delete();
-                }
-            }
-            else {
-                interaction.reply({
-                    content: 'Only Supporter can claim/close a ticket!',
-                    ephemeral: true
-                });
             }
         }
     }));
