@@ -1,1 +1,1 @@
-worker: nodemon index.ts
+web: npm run dev
