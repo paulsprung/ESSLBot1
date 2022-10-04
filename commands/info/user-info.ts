@@ -8,6 +8,7 @@ export default {
     maxArgs: 1,
     expectedArgs: '[User]',
 
+
     options: [
         {
             name: 'user',
@@ -18,7 +19,10 @@ export default {
     ],
 
     slash: true,
-    testOnly: true,
+    testOnly: false,
+    
+    requiredPermissions: ['ADMINISTRATOR'],
+
 
     callback: ({ interaction, member }) => {
         let target = interaction.options.getMember('user') as GuildMember;

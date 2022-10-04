@@ -6,7 +6,7 @@ export default {
     description: 'Zeigt Info über den Server',
 
     slash: true,
-    testOnly: false,
+    testOnly: true,
 
     requiredPermissions: ['ADMINISTRATOR'],
     

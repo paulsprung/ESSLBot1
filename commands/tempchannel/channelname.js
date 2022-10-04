@@ -21,7 +21,7 @@ exports.default = {
     minArgs: 1,
     expectedArgs: '<text>',
     slash: true,
-    //testOnly: true,
+    testOnly: false,
     ephemeral: true,
     options: [
         {

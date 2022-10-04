@@ -35,6 +35,16 @@ exports.default = (client) => {
         if (newState.channel === data[0]) {
             const joinchannel = yield guild.channels.create(`➤${user.username}'s Channel`, {
                 type: 'GUILD_VOICE',
+                permissionOverwrites: [
+                    {
+                        id: user.id,
+                        allow: ['MANAGE_CHANNELS'],
+                    },
+                    {
+                        id: guild.roles.everyone,
+                        allow: ['SPEAK', 'CONNECT', 'REQUEST_TO_SPEAK', 'STREAM'],
+                    }
+                ],
                 parent: data[1],
             });
             member.voice.setChannel(joinchannel);

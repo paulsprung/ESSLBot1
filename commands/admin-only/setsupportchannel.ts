@@ -2,6 +2,7 @@ import DJS, { MessageActionRow, MessageSelectMenu, MessageEmbed } from 'discord.
 import { ICommand } from "wokcommands";
 import supportchannelSchema from '../../models/supportchannel-Schema';
 
+
 export default {
     category: 'Configuration',
     description: 'sets beta button',
@@ -12,7 +13,7 @@ export default {
     expectedArgs: '<channel> <category> <role>',
 
     slash: true,
-    //testOnly: true,
+    testOnly: false,
 
     options: [
         {
@@ -105,7 +106,6 @@ export default {
             embeds : [embed],
             components: [row]
         })
-
 
         await supportchannelSchema.findOneAndUpdate({
             _id: guild.id

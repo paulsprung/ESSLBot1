@@ -24,7 +24,7 @@ client.on('ready', async () => {
         
         typeScript: __filename.endsWith(".ts"),
         testServers: ['953970921981489173'],
-        botOwners: ['837661782151659560', '433645584696475653'],
+        botOwners: ['837661782151659560'],
         mongoUri: process.env.MONGO_URI,
     })
 

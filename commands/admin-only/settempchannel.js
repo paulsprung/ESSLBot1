@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = __importDefault(require("discord.js"));
-const tempchannel_schema_1 = __importDefault(require("../../models/tempchannelmodels/tempchannel-schema"));
+const guildinfo_Schema_1 = __importDefault(require("../../models/guildinfo-Schema"));
 exports.default = {
     category: 'Configuration',
     description: 'Set the temp channel!',
@@ -21,7 +21,7 @@ exports.default = {
     minArgs: 2,
     expectedArgs: '<channel> <category>',
     slash: true,
-    //testOnly: true,
+    testOnly: false,
     options: [
         {
             name: 'channel',
@@ -48,12 +48,13 @@ exports.default = {
         if (!category || category.type !== 'GUILD_CATEGORY') {
             return 'Please tag a category channel.';
         }
-        yield tempchannel_schema_1.default.findOneAndUpdate({
+        yield guildinfo_Schema_1.default.findOneAndUpdate({
             _id: guild.id
         }, {
             _id: guild.id,
-            categoryId: category.id,
-            channelId: target.id
+            serverName: guild.name,
+            tempchannelId: target.id,
+            tempcategoryId: category.id,
         }, {
             upsert: true
         });

@@ -44,7 +44,7 @@ exports.default = {
     minArgs: 1,
     expectedArgs: '<channel> <category> <role>',
     slash: true,
-    //testOnly: true,
+    testOnly: false,
     options: [
         {
             name: 'channel',

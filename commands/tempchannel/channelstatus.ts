@@ -17,7 +17,7 @@ export default {
     expectedArgs: `<${actions.join('", "')}>`,
 
     slash: true,
-    //testOnly: true,
+    testOnly: false,
     ephemeral: false,
 
     options: [

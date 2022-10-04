@@ -8,12 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
-const rolemessage_Schemax_1 = __importDefault(require("../../../models/rolemessage-Schemax"));
 const buttonStyles = ['primary', 'secondary', 'sucess', 'danger'];
 const prefix = 'button-roles';
 exports.default = {
@@ -119,14 +115,6 @@ exports.default = {
             return `Unknown button style. Valid styles are: "${(buttonStyles.join(', '))}"`;
         }
         const buttonlabel = args.join(' ');
-        const data = yield rolemessage_Schemax_1.default.findById(guild.id);
-        if (!data) {
-            return {
-                custom: true,
-                ephermeral: true,
-                content: 'No role message found. Send one using /rolemesg'
-            };
-        }
         const roleMessage = yield channel.messages.fetch(msg);
         const rows = roleMessage.components;
         const button = new discord_js_1.MessageButton()

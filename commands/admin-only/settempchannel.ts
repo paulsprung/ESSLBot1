@@ -1,6 +1,6 @@
 import DJS from 'discord.js'
 import { ICommand } from "wokcommands";
-import tempchannelSchema from '../../models/tempchannelmodels/tempchannel-schema';
+import guildinfoSchema from '../../models/guildinfo-Schema';
 
 export default {
     category: 'Configuration',
@@ -12,7 +12,7 @@ export default {
     expectedArgs: '<channel> <category>',
 
     slash: true,
-    //testOnly: true,
+    testOnly: false,
 
     options: [
         {
@@ -44,16 +44,18 @@ export default {
             return 'Please tag a category channel.'
         }
 
-        await tempchannelSchema.findOneAndUpdate({
+        await guildinfoSchema.findOneAndUpdate({
             _id: guild.id
-
         },{
             _id: guild.id,
-            categoryId: category.id,
-            channelId: target.id
+            serverName: guild.name,
+            tempchannelId: target.id,
+            tempcategoryId: category.id,
         },{
             upsert: true
         })
+
+        
         return 'Temp Channel gesetzt';
         
     }

@@ -1,5 +1,7 @@
-import DJS, { Message, MessageEmbed, MessageEmbedVideo, TextChannel } from 'discord.js';
+import DJS, { MessageEmbed, Guild } from 'discord.js';
 import { ICommand } from "wokcommands";
+import guildinfoSchema from '../../../models/guildinfo-Schema';
+
 export default {
     category: 'Configuration',
     description: 'sends Rule Message',
@@ -52,33 +54,7 @@ export default {
             .setTimestamp()
             .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
     
-        /*const gameembed = new MessageEmbed()
-            .setColor('#e3000b')
-            .setTitle('**Games**')
-            .setDescription('Get your Gamerole here!')
-            .setTimestamp()
-            .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
-        
-        const newsembed = new MessageEmbed()
-            .setColor('#e3000b')
-            .setTitle('**News**')
-            .setDescription('Click to get specified news!')
-            .setTimestamp()
-            .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
 
-        const feedback = new MessageEmbed()
-            .setColor('#e3000b')
-            .setTitle('**Setup**')
-            .setDescription('Autorolechannel set!')
-            .addFields(
-                
-                { name: 'add Autoroles', value: '/addbuttonrole'},
-                { name: 'add the valorant Autorole', value: '/setvaloautorole', inline: true },
-                { name: 'add the RocketLeague Autorole', value: 'need to work on it', inline: true },
-            )
-            .setTimestamp()
-            .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
-        */
         await target.send({
             files: ["https://i.imgur.com/YfW4K8P.png"],
         })
@@ -86,9 +62,16 @@ export default {
             embeds: [ruleembeded],
         })
 
-
-
-        
+        await guildinfoSchema.findOneAndUpdate({
+            _id: guild.id
+        },{
+            _id: guild.id,
+            serverName: guild.name,
+            rulechannelId: target.id,
+        },{
+            upsert: true
+        })
         return 'rulechannelset';   
     }
+
 } as ICommand

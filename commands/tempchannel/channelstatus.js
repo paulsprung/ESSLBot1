@@ -22,7 +22,7 @@ exports.default = {
     minArgs: 1,
     expectedArgs: `<${actions.join('", "')}>`,
     slash: true,
-    //testOnly: true,
+    testOnly: false,
     ephemeral: false,
     options: [
         {

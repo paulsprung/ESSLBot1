@@ -15,7 +15,8 @@ exports.default = {
         },
     ],
     slash: true,
-    testOnly: true,
+    testOnly: false,
+    requiredPermissions: ['ADMINISTRATOR'],
     callback: ({ interaction, member }) => {
         let target = interaction.options.getMember('user');
         if (!target) {

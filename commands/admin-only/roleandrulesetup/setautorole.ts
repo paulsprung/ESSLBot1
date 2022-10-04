@@ -1,8 +1,6 @@
 import DJS, { Message, MessageEmbed, MessageEmbedVideo, TextChannel } from 'discord.js';
 import { ICommand } from "wokcommands";
-import sautoroleSchema from '../../../models/rolemessage-Schemax';
-
-
+import guildinfoSchema from '../../../models/guildinfo-Schema';
 
 export default {
     category: 'Configuration',
@@ -14,7 +12,7 @@ export default {
     expectedArgs: '<channel>',
 
     slash: true,
-    testOnly: true,
+    testOnly: false,
 
     options: [
         {
@@ -84,16 +82,16 @@ export default {
             embeds: [newsembed],
         })
 
-        await sautoroleSchema.findOneAndUpdate({
+        await guildinfoSchema.findOneAndUpdate({
             _id: guild.id
-
         },{
             _id: guild.id,
-            channelId: target.id
+            serverName: guild.name,
+            autorolechannelId: target.id,
         },{
             upsert: true
         })
 
-        return 'autorolechannelset';   
+        return 'autorolechannelset'   
     }
 } as ICommand

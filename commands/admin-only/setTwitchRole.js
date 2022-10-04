@@ -21,7 +21,7 @@ exports.default = {
     minArgs: 2,
     expectedArgs: '<role> <role>',
     slash: true,
-    //testOnly: true,
+    testOnly: false,
     options: [
         {
             name: 'trole',

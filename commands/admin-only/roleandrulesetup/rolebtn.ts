@@ -1,10 +1,7 @@
-import rolemessageSchame from "../../../models/rolemessage-Schame";
 import {
-    Channel,
     Client,
     EmojiIdentifierResolvable,
     GuildMember,
-    Interaction,
     MessageActionRow,
     MessageButton,
     MessageButtonStyleResolvable,
@@ -12,7 +9,6 @@ import {
     TextChannel,
 } from 'discord.js'
 import { ICommand } from "wokcommands";
-import rolemessageSchemax from "../../../models/rolemessage-Schemax";
 
 const buttonStyles = ['primary', 'secondary', 'sucess', 'danger']
 const prefix = 'button-roles'
@@ -138,15 +134,6 @@ export default {
         }
     
         const buttonlabel = args.join(' ')
-
-        const data = await rolemessageSchemax.findById(guild!.id)
-        if(!data){
-            return{
-                custom: true,
-                ephermeral: true,
-                content: 'No role message found. Send one using /rolemesg'
-            }
-        }
     
         const roleMessage = await channel.messages.fetch(msg!)
         const rows = roleMessage.components

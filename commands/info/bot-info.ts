@@ -7,8 +7,10 @@ export default {
     description: 'Zeigt Info über den Bot',
 
     slash: true,
-    testOnly: true,
+    testOnly: false,
 
+    requiredPermissions: ['ADMINISTRATOR'],
+    
     callback: ({ interaction, client }) => {
         const embed = new MessageEmbed()
             .setAuthor({

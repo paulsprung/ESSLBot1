@@ -2,6 +2,7 @@ import DJS, { MessageActionRow, MessageButton } from 'discord.js'
 import { MessageEmbed } from 'discord.js';
 import { ICommand } from "wokcommands";
 import verifychannelSchema from '../../../models/verifychannelschema';
+import guildinfoSchema from '../../../models/guildinfo-Schema';
 
 export default {
     category: 'Configuration',
@@ -13,7 +14,7 @@ export default {
     expectedArgs: '<channel> <role>',
 
     slash: true,
-    //testOnly: true,
+    testOnly: false,
 
     options: [
         {
@@ -29,7 +30,7 @@ export default {
         }
     ],
 
-    callback: async ({ guild, message, interaction, args}) => {
+    callback: async ({ guild, interaction }) => {
         if(!guild){
             return 'Please use this command within a server'
         }
@@ -66,13 +67,14 @@ export default {
         })
 
 
-        await verifychannelSchema.findOneAndUpdate({
+        await guildinfoSchema.findOneAndUpdate({
             _id: guild.id
-
         },{
             _id: guild.id,
-            roleId: give.id,
-            channelId: target.id
+            serverName: guild.name,
+            
+            joinroleId: give.id,
+            joinchannelId: target.id
         },{
             upsert: true
         })

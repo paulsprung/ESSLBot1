@@ -5,7 +5,7 @@ exports.default = {
     category: 'info',
     description: 'Zeigt Info über den Server',
     slash: true,
-    testOnly: false,
+    testOnly: true,
     requiredPermissions: ['ADMINISTRATOR'],
     callback: ({ interaction, guild, client }) => {
         const embed = new discord_js_1.MessageEmbed()

@@ -31,8 +31,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = __importStar(require("discord.js"));
+const guildinfo_Schema_1 = __importDefault(require("../../../models/guildinfo-Schema"));
 exports.default = {
     category: 'Configuration',
     description: 'sends Rule Message',
@@ -65,38 +69,20 @@ exports.default = {
             .addFields({ name: '**1. Behandelt alle mit Respekt.**', value: 'Persönliche Attacken, Schimpfwörter etc. werden mit Mutes / kicks gehandelt.' }, { name: '**2. Die Channels anhand ihrer Channel Beschreibung nutzen.**', value: 'Mehrfaches missachten dieser Beschreibung führt zu Mutes.' }, { name: '**3. Absolut kein NSFW.**', value: 'Wir müssen uns an die Jugendschutzgesetze halten. Missachten dieses wird mit Kicks bestraft.', }, { name: '**4. Keine Werbung.**', value: '\u200B', }, { name: '**5. Kein Spamming.**', value: '\u200B \u200B', }, { name: '**6. Gib dich nicht als Person aus die du nicht bist.**', value: '\u200B', }, { name: '***Anmerkung***', value: '• Diese Regeln sind nicht allumfassend. Nur weil es nicht hier steht, heißt es nicht das es erlaubt ist. \n • Benutze deinen Verstand und folgen den Anweisungen des Morderations Teams. \n • Um einen User zu Reporten, Feedback zu geben oder anderweitiges, sende bitte eine DM an \n • Discord Terms of Service sind jederzeit einzuhalten.', })
             .setTimestamp()
             .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
-        /*const gameembed = new MessageEmbed()
-            .setColor('#e3000b')
-            .setTitle('**Games**')
-            .setDescription('Get your Gamerole here!')
-            .setTimestamp()
-            .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
-        
-        const newsembed = new MessageEmbed()
-            .setColor('#e3000b')
-            .setTitle('**News**')
-            .setDescription('Click to get specified news!')
-            .setTimestamp()
-            .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
-
-        const feedback = new MessageEmbed()
-            .setColor('#e3000b')
-            .setTitle('**Setup**')
-            .setDescription('Autorolechannel set!')
-            .addFields(
-                
-                { name: 'add Autoroles', value: '/addbuttonrole'},
-                { name: 'add the valorant Autorole', value: '/setvaloautorole', inline: true },
-                { name: 'add the RocketLeague Autorole', value: 'need to work on it', inline: true },
-            )
-            .setTimestamp()
-            .setFooter({ text: 'ESSL Bot', iconURL: 'https://imgur.com/Eo323Sd.jpg' });
-        */
         yield target.send({
             files: ["https://i.imgur.com/YfW4K8P.png"],
         });
         yield target.send({
             embeds: [ruleembeded],
+        });
+        yield guildinfo_Schema_1.default.findOneAndUpdate({
+            _id: guild.id
+        }, {
+            _id: guild.id,
+            serverName: guild.name,
+            rulechannelId: target.id,
+        }, {
+            upsert: true
         });
         return 'rulechannelset';
     })

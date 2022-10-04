@@ -56,7 +56,7 @@ client.on('ready', () => __awaiter(void 0, void 0, void 0, function* () {
         featureDir: path_1.default.join(__dirname, 'features'),
         typeScript: __filename.endsWith(".ts"),
         testServers: ['953970921981489173'],
-        botOwners: ['837661782151659560', '433645584696475653'],
+        botOwners: ['837661782151659560'],
         mongoUri: process.env.MONGO_URI,
     });
     console.log('the bot is ready');

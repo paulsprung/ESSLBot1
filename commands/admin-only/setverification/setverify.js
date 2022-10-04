@@ -37,7 +37,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = __importStar(require("discord.js"));
 const discord_js_2 = require("discord.js");
-const verifychannelschema_1 = __importDefault(require("../../../models/verifychannelschema"));
+const guildinfo_Schema_1 = __importDefault(require("../../../models/guildinfo-Schema"));
 exports.default = {
     category: 'Configuration',
     description: 'Set the temp verify!',
@@ -45,7 +45,7 @@ exports.default = {
     minArgs: 1,
     expectedArgs: '<channel> <role>',
     slash: true,
-    //testOnly: true,
+    testOnly: false,
     options: [
         {
             name: 'channel',
@@ -59,7 +59,7 @@ exports.default = {
             type: discord_js_1.default.Constants.ApplicationCommandOptionTypes.ROLE
         }
     ],
-    callback: ({ guild, message, interaction, args }) => __awaiter(void 0, void 0, void 0, function* () {
+    callback: ({ guild, interaction }) => __awaiter(void 0, void 0, void 0, function* () {
         if (!guild) {
             return 'Please use this command within a server';
         }
@@ -89,12 +89,13 @@ exports.default = {
             embeds: [embed],
             components: [row]
         });
-        yield verifychannelschema_1.default.findOneAndUpdate({
+        yield guildinfo_Schema_1.default.findOneAndUpdate({
             _id: guild.id
         }, {
             _id: guild.id,
-            roleId: give.id,
-            channelId: target.id
+            serverName: guild.name,
+            joinroleId: give.id,
+            joinchannelId: target.id
         }, {
             upsert: true
         });

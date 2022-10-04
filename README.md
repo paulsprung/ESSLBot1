@@ -71,6 +71,6 @@ This is a rewrite and remake of the [v1](https://github.com/PhilRoli/ESSL_Bot) a
 - [x] Twitch Active Live Rolle
 - [ ] Reactive Roles #needed before opening
 - [ ] Embed Message mit Aktivierbaren Buttons zur Tunieranmeldung (link)
-- [ ] Embed Message mit Regeln und Infos #needed before opening
-- [ ] Banner hinzufuegen per Bot #needed before opening
+- [x] Embed Message mit Regeln und Infos #needed before opening
+- [x] Banner hinzufuegen per Bot #needed before opening
 - [ ] LFT Post Command 

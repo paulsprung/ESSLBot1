@@ -6,7 +6,8 @@ exports.default = {
     category: 'info',
     description: 'Zeigt Info über den Bot',
     slash: true,
-    testOnly: true,
+    testOnly: false,
+    requiredPermissions: ['ADMINISTRATOR'],
     callback: ({ interaction, client }) => {
         var _a, _b;
         const embed = new discord_js_1.MessageEmbed()
