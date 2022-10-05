@@ -28,9 +28,9 @@ exports.default = (client) => {
             if (!results) {
                 return;
             }
-            const { channelId, roleId } = results;
-            const channel = guild.channels.cache.get(channelId);
-            const role = guild.roles.cache.get(roleId);
+            const { joinchannelId, joinroleId } = results;
+            const channel = guild.channels.cache.get(joinchannelId);
+            const role = guild.roles.cache.get(joinroleId);
             data = guildinfoData[guild.id] = [channel, role];
         }
         if (((_a = interaction.channel) === null || _a === void 0 ? void 0 : _a.id) === data[0].id) {

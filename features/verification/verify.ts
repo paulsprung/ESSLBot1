@@ -20,9 +20,9 @@ export default (client: Client) => {
             if(!results){
                 return
             }
-            const { channelId, roleId} = results
-            const channel = guild.channels.cache.get(channelId) as TextChannel
-            const role = guild.roles.cache.get(roleId) as Role
+            const { joinchannelId, joinroleId} = results
+            const channel = guild.channels.cache.get(joinchannelId) as TextChannel
+            const role = guild.roles.cache.get(joinroleId) as Role
             data = guildinfoData[guild.id] = [channel, role]
         }
 
