@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
-const twitchrole_Schema_1 = __importDefault(require("../../models/twitchrole-Schema"));
+const guildinfo_Schema_1 = __importDefault(require("../../models/guildinfo-Schema"));
 const twitchroleData = {};
 exports.default = (client) => {
     client.on('presenceUpdate', (oldMember, newMember) => __awaiter(void 0, void 0, void 0, function* () {
@@ -23,13 +23,13 @@ exports.default = (client) => {
         }
         let data = twitchroleData[guild.id];
         if (!data) {
-            const results = yield twitchrole_Schema_1.default.findById(guild.id);
+            const results = yield guildinfo_Schema_1.default.findById(guild.id);
             if (!results) {
                 return;
             }
-            const { troleId, lroleId } = results;
-            const trole = guild.roles.cache.get(troleId);
-            const lrole = guild.roles.cache.get(lroleId);
+            const { twitchroleId, liveroleId } = results;
+            const trole = guild.roles.cache.get(twitchroleId);
+            const lrole = guild.roles.cache.get(liveroleId);
             data = twitchroleData[guild.id] = [trole, lrole];
         }
         const status = newMember.activities.filter((activity) => {

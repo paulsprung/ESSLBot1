@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
 const discord_js_1 = require("discord.js");
-const supportchannel_Schema_1 = __importDefault(require("../../models/supportchannel-Schema"));
+const guildinfo_Schema_1 = __importDefault(require("../../models/guildinfo-Schema"));
 const supportchannelData = {};
 exports.default = (client) => {
     client.on('interactionCreate', (interaction) => __awaiter(void 0, void 0, void 0, function* () {
@@ -25,14 +25,14 @@ exports.default = (client) => {
         }
         let data = supportchannelData[guild.id];
         if (!data) {
-            const results = yield supportchannel_Schema_1.default.findById(guild.id);
+            const results = yield guildinfo_Schema_1.default.findById(guild.id);
             if (!results) {
                 return;
             }
-            const { channelId, categoryId, roleId } = results;
-            const channel = guild.channels.cache.get(channelId);
-            const category = guild.channels.cache.get(categoryId);
-            const role = guild.roles.cache.get(roleId);
+            const { supportchannelId, supportcategoryId, supportroleId } = results;
+            const channel = guild.channels.cache.get(supportchannelId);
+            const category = guild.channels.cache.get(supportcategoryId);
+            const role = guild.roles.cache.get(supportroleId);
             data = supportchannelData[guild.id] = [channel, category, role];
         }
         if (((_a = interaction.channel) === null || _a === void 0 ? void 0 : _a.id) === data[0].id) {

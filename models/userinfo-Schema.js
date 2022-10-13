@@ -35,11 +35,9 @@ const guildinfoSchema = new mongoose_1.Schema({
     channelname: reqString,
     channelsize: reqString,
     channelstatus: reqString,
-    channelid: reqString,
-    supportchannelId: reqString,
-    supportroleId: reqString,
-    twitchroleId: reqString,
-    liveroleId: reqString,
+    //Array mit Rollen
+    //Reports
+    //Anmerkung
 });
 const name = 'guildinfo';
 exports.default = mongoose_1.default.models[name] || mongoose_1.default.model(name, guildinfoSchema, name);

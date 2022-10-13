@@ -12,11 +12,9 @@ const guildinfoSchema = new Schema({
     channelname: reqString,
     channelsize: reqString,
     channelstatus: reqString,    
-    channelid: reqString,
-    supportchannelId: reqString,
-    supportroleId: reqString,
-    twitchroleId: reqString,
-    liveroleId: reqString,
+    //Array mit Rollen
+    //Reports
+    //Anmerkung
 })
 
 const name = 'guildinfo'

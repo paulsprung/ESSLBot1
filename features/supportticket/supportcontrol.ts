@@ -1,6 +1,5 @@
 import { CategoryChannel, Client, MessageSelectMenu, TextChannel, MessageEmbed, MessageActionRow, MessageButton, ButtonInteraction, Collection, Options, Role, GuildMember } from "discord.js";
-import supportchannelSchema from "../../models/supportchannel-Schema";
-import channelInfoSchema from "../../models/tempchannelmodels/channelInfoSchema";
+import guildinfoSchema from "../../models/guildinfo-Schema";
 
 const supportchannelData = {} as {
     // guildID: [channel, role]
@@ -17,13 +16,13 @@ export default (client: Client) => {
 
         let data = supportchannelData[guild.id]
         if(!data){
-            const results = await supportchannelSchema.findById(guild.id)
+            const results = await guildinfoSchema.findById(guild.id)
             if(!results){
                 return
             }
-            const { categoryId, roleId} = results
-            const category = guild.channels.cache.get(categoryId) as CategoryChannel
-            const role = guild.roles.cache.get(roleId) as Role
+            const { supportcategoryId, supportroleId} = results
+            const category = guild.channels.cache.get(supportcategoryId) as CategoryChannel
+            const role = guild.roles.cache.get(supportroleId) as Role
             data = supportchannelData[guild.id] = [category, role]
         }
 

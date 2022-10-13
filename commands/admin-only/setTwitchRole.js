@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = __importDefault(require("discord.js"));
-const twitchrole_Schema_1 = __importDefault(require("../../models/twitchrole-Schema"));
+const guildinfo_Schema_1 = __importDefault(require("../../models/guildinfo-Schema"));
 exports.default = {
     category: 'Configuration',
     description: 'Set the Twitch Roles',
@@ -48,12 +48,12 @@ exports.default = {
         if (!lrole) {
             return 'please tag a Live Role.';
         }
-        yield twitchrole_Schema_1.default.findOneAndUpdate({
+        yield guildinfo_Schema_1.default.findOneAndUpdate({
             _id: guild.id
         }, {
             _id: guild.id,
-            troleId: trole.id,
-            lroleId: lrole.id
+            twitchroleId: trole.id,
+            liveroleId: lrole.id
         }, {
             upsert: true
         });

@@ -1,6 +1,6 @@
 import { Client, VoiceChannel, CategoryChannel, } from "discord.js";
-import tempchannelSchema from "../../models/tempchannelmodels/tempchannel-schema";
 import channelInfoSchema from "../../models/tempchannelmodels/channelInfoSchema";
+import guildinfoSchema from "../../models/guildinfo-Schema";
 
 
 const tempchannelData = {} as {
@@ -14,13 +14,13 @@ export default (client: Client) => {
         const { guild, id } = oldState
         let data = tempchannelData[guild.id]
         if(!data){
-            const results = await tempchannelSchema.findById(guild.id)
+            const results = await guildinfoSchema.findById(guild.id)
             if(!results){
                 return
             }
-            const { channelId, categoryId } = results
-            const channel = guild.channels.cache.get(channelId) as VoiceChannel
-            const category = guild.channels.cache.get(categoryId) as CategoryChannel
+            const { tempchannelId, tempcategoryId } = results
+            const channel = guild.channels.cache.get(tempchannelId) as VoiceChannel
+            const category = guild.channels.cache.get(tempcategoryId) as CategoryChannel
             
             data = tempchannelData[guild.id] = [channel, category]
         }

@@ -1,5 +1,5 @@
 import { Client, Role, ActivityType } from "discord.js";
-import twitchroleSchema from "../../models/twitchrole-Schema";
+import guildinfoSchema from "../../models/guildinfo-Schema";
 
 
 const twitchroleData = {} as {
@@ -17,13 +17,13 @@ export default (client: Client) => {
 
         let data = twitchroleData[guild.id]
         if(!data){
-            const results = await twitchroleSchema.findById(guild.id)
+            const results = await guildinfoSchema.findById(guild.id)
             if(!results){
                 return
             }
-            const { troleId, lroleId} = results
-            const trole = guild.roles.cache.get(troleId) as Role
-            const lrole = guild.roles.cache.get(lroleId) as Role
+            const { twitchroleId, liveroleId} = results
+            const trole = guild.roles.cache.get(twitchroleId) as Role
+            const lrole = guild.roles.cache.get(liveroleId) as Role
             data = twitchroleData[guild.id] = [trole, lrole]
         }
         const status = newMember.activities.filter((activity) => {

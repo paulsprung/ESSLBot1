@@ -1,6 +1,6 @@
 import DJS, { Role } from 'discord.js'
 import { ICommand } from "wokcommands";
-import twitchroleSchema from '../../models/twitchrole-Schema';
+import guildinfoSchema from '../../models/guildinfo-Schema';
 
 export default {
     category: 'Configuration',
@@ -44,13 +44,13 @@ export default {
             return 'please tag a Live Role.'
         }
 
-        await twitchroleSchema.findOneAndUpdate({
+        await guildinfoSchema.findOneAndUpdate({
             _id: guild.id
 
         },{
             _id: guild.id,
-            troleId: trole.id,
-            lroleId: lrole.id
+            twitchroleId: trole.id,
+            liveroleId: lrole.id
         },{
             upsert: true
         })

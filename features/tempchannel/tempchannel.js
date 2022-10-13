@@ -13,21 +13,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
-const tempchannel_schema_1 = __importDefault(require("../../models/tempchannelmodels/tempchannel-schema"));
 const channelInfoSchema_1 = __importDefault(require("../../models/tempchannelmodels/channelInfoSchema"));
+const guildinfo_Schema_1 = __importDefault(require("../../models/guildinfo-Schema"));
 const tempchannelData = {};
 exports.default = (client) => {
     client.on('voiceStateUpdate', (oldState, newState) => __awaiter(void 0, void 0, void 0, function* () {
         const { guild, id } = oldState;
         let data = tempchannelData[guild.id];
         if (!data) {
-            const results = yield tempchannel_schema_1.default.findById(guild.id);
+            const results = yield guildinfo_Schema_1.default.findById(guild.id);
             if (!results) {
                 return;
             }
-            const { channelId, categoryId } = results;
-            const channel = guild.channels.cache.get(channelId);
-            const category = guild.channels.cache.get(categoryId);
+            const { tempchannelId, tempcategoryId } = results;
+            const channel = guild.channels.cache.get(tempchannelId);
+            const category = guild.channels.cache.get(tempcategoryId);
             data = tempchannelData[guild.id] = [channel, category];
         }
         const user = yield client.users.fetch(newState.id);
