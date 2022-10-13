@@ -42,7 +42,7 @@ exports.default = (client) => {
             });
             for (const id of selected) {
                 const channel = yield guild.channels.create(`${id.value}-ticket`, {
-                    parent: data[1].id,
+                    parent: data[1],
                     type: 'GUILD_TEXT',
                     permissionOverwrites: [{
                             id: guild.roles.everyone,

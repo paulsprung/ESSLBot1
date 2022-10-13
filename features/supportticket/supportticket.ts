@@ -1,6 +1,5 @@
 import { CategoryChannel, Client, MessageSelectMenu, TextChannel, MessageEmbed, MessageActionRow, MessageButton,   Role } from "discord.js";
 import guildinfoSchema from "../../models/guildinfo-Schema";
-import supportchannelSchema from "../../models/supportchannel-Schema";
 
 const supportchannelData = {} as {
     // guildID: [channel, role]
@@ -35,7 +34,7 @@ export default (client: Client) => {
             })
             for (const id of selected){
                 const channel = await guild.channels.create(`${id.value}-ticket`, {
-                    parent: data[1].id,
+                    parent: data[1],
                     type: 'GUILD_TEXT',
                     permissionOverwrites: [{
                         id: guild.roles.everyone,
