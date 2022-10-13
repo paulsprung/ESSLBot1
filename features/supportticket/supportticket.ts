@@ -34,7 +34,7 @@ export default (client: Client) => {
             })
             for (const id of selected){
                 const channel = await guild.channels.create(`${id.value}-ticket`, {
-                    parent: data[1],
+                    parent: data[1].id,
                     type: 'GUILD_TEXT',
                     permissionOverwrites: [{
                         id: guild.roles.everyone,

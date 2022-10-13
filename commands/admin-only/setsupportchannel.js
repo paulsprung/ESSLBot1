@@ -36,7 +36,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = __importStar(require("discord.js"));
-const supportchannel_Schema_1 = __importDefault(require("../../models/supportchannel-Schema"));
+const guildinfo_Schema_1 = __importDefault(require("../../models/guildinfo-Schema"));
 exports.default = {
     category: 'Configuration',
     description: 'sets beta button',
@@ -128,13 +128,13 @@ exports.default = {
             embeds: [embed],
             components: [row]
         });
-        yield supportchannel_Schema_1.default.findOneAndUpdate({
+        yield guildinfo_Schema_1.default.findOneAndUpdate({
             _id: guild.id
         }, {
             _id: guild.id,
-            categoryId: category.id,
-            channelId: target.id,
-            roleId: role.id,
+            supportcategoryId: category.id,
+            supportchannelId: target.id,
+            supportroleId: role.id,
         }, {
             upsert: true
         });

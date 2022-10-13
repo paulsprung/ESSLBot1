@@ -1,6 +1,6 @@
 import DJS, { MessageActionRow, MessageSelectMenu, MessageEmbed } from 'discord.js'
 import { ICommand } from "wokcommands";
-import supportchannelSchema from '../../models/supportchannel-Schema';
+import guildinfoSchema from '../../models/guildinfo-Schema';
 
 
 export default {
@@ -107,14 +107,14 @@ export default {
             components: [row]
         })
 
-        await supportchannelSchema.findOneAndUpdate({
+        await guildinfoSchema.findOneAndUpdate({
             _id: guild.id
 
         },{
             _id: guild.id,
-            categoryId: category.id,
-            channelId: target.id,
-            roleId: role.id,
+            supportcategoryId: category.id,
+            supportchannelId: target.id,
+            supportroleId: role.id,
         },{
             upsert: true
         })
