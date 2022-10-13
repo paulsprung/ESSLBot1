@@ -28,6 +28,9 @@ exports.default = (client) => {
                 return;
             }
             const { twitchroleId, liveroleId } = results;
+            if (!twitchroleId) {
+                return;
+            }
             const trole = guild.roles.cache.get(twitchroleId);
             const lrole = guild.roles.cache.get(liveroleId);
             data = twitchroleData[guild.id] = [trole, lrole];

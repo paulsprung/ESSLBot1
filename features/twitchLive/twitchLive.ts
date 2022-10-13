@@ -22,6 +22,9 @@ export default (client: Client) => {
                 return
             }
             const { twitchroleId, liveroleId} = results
+            if(!twitchroleId){
+                return
+            }
             const trole = guild.roles.cache.get(twitchroleId) as Role
             const lrole = guild.roles.cache.get(liveroleId) as Role
             data = twitchroleData[guild.id] = [trole, lrole]
