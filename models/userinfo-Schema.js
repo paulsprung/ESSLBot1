@@ -28,16 +28,20 @@ const reqString = {
     type: String,
     require: true
 };
-const guildinfoSchema = new mongoose_1.Schema({
-    //Guild ID
+const reqInt = {
+    type: Number,
+    require: true,
+};
+const userinfoSchema = new mongoose_1.Schema({
     _id: reqString,
     userName: reqString,
     channelname: reqString,
     channelsize: reqString,
     channelstatus: reqString,
-    //Array mit Rollen
-    //Reports
-    //Anmerkung
+    roles: [{ type: reqString }],
+    leaderboardscore: reqInt,
+    behaviorscore: reqInt,
+    note: reqString,
 });
-const name = 'guildinfo';
-exports.default = mongoose_1.default.models[name] || mongoose_1.default.model(name, guildinfoSchema, name);
+const name = 'userinfoSchema';
+exports.default = mongoose_1.default.models[name] || mongoose_1.default.model(name, userinfoSchema, name);

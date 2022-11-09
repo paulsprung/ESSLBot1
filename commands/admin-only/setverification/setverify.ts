@@ -1,7 +1,6 @@
 import DJS, { MessageActionRow, MessageButton } from 'discord.js'
 import { MessageEmbed } from 'discord.js';
 import { ICommand } from "wokcommands";
-import verifychannelSchema from '../../../models/verifychannelschema';
 import guildinfoSchema from '../../../models/guildinfo-Schema';
 
 export default {

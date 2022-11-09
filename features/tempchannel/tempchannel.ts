@@ -39,7 +39,7 @@ export default (client: Client) => {
                     },
                     {
                         id: guild.roles.everyone,
-                        allow: ['SPEAK', 'CONNECT', 'REQUEST_TO_SPEAK', 'STREAM'],
+                        allow: ['SPEAK', 'CONNECT', 'STREAM', 'USE_VAD'],
                     }
                  ],
                 parent: data[1],

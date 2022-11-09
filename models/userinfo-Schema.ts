@@ -4,18 +4,22 @@ const reqString = {
     type: String,
     require: true
 }
+const reqInt = {
+    type: Number,
+    require: true,
+}
 
-const guildinfoSchema = new Schema({
-    //Guild ID
+const userinfoSchema = new Schema({
     _id: reqString,
     userName: reqString,
     channelname: reqString,
     channelsize: reqString,
     channelstatus: reqString,    
-    //Array mit Rollen
-    //Reports
-    //Anmerkung
+    roles: [{type: reqString}],
+    leaderboardscore: reqInt,
+    behaviorscore: reqInt,
+    note: reqString,
 })
 
-const name = 'guildinfo'
-export default mongoose.models[name] || mongoose.model(name, guildinfoSchema, name)
+const name = 'userinfoSchema'
+export default mongoose.models[name] || mongoose.model(name, userinfoSchema, name)
