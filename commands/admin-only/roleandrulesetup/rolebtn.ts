@@ -1,13 +1,4 @@
-import {
-    Client,
-    EmojiIdentifierResolvable,
-    GuildMember,
-    MessageActionRow,
-    MessageButton,
-    MessageButtonStyleResolvable,
-    Role,
-    TextChannel,
-} from 'discord.js'
+import { Client, EmojiIdentifierResolvable, GuildMember, MessageActionRow, MessageButton, MessageButtonStyleResolvable, Role, TextChannel } from 'discord.js'
 import { ICommand } from "wokcommands";
 
 const buttonStyles = ['primary', 'secondary', 'sucess', 'danger']
@@ -96,7 +87,7 @@ export default {
 
                 Interaction.reply({
                     ephemeral: true,
-                    content: `You now have to <@${roleId}> role`
+                    content: `You now have the <@${roleId}> role`
                 })
             }
         })
@@ -172,7 +163,7 @@ export default {
 
         return {
             custom: true,
-            ephermeral: true,
+            ephermeral: false,
             content: 'Added button to role message'
 
         }

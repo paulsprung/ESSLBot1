@@ -86,7 +86,7 @@ exports.default = {
                 member.roles.add(roleId);
                 Interaction.reply({
                     ephemeral: true,
-                    content: `You now have to <@${roleId}> role`
+                    content: `You now have the <@${roleId}> role`
                 });
             }
         });
@@ -145,7 +145,7 @@ exports.default = {
         });
         return {
             custom: true,
-            ephermeral: true,
+            ephermeral: false,
             content: 'Added button to role message'
         };
     })
